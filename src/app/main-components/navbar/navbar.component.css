@@ -1,0 +1,24 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.nav-item{
+    margin: 20px;
+}
+
+.nav-button{
+    background-color: inherit;
+}
+
+a.navbar-brand:hover,
+.nav-item .nav-link:hover {
+    color: wheat;
+}
+
+/* a.nav-link {
+    color:white;
+} */
+
+.nav-item .nav-link{
+    color:white;
+}
