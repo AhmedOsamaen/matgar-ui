@@ -8,22 +8,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './Modules/Material.module';
 import { ProductsSearchComponent } from './main-components/products-search/products-search.component';
 import { ProductDetailsComponent } from './main-components/product-details/product-details.component';
+import { ProductsService } from './Services/products.service';
 
+import { AddProductsComponent } from './main-components/add-products/add-products.component';
+// import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ProductsSearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    AddProductsComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    HttpClientModule,
+    MaterialModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

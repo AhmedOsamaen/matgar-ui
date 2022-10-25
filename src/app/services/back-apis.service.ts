@@ -9,6 +9,6 @@ export class BackAPIsService {
 
   constructor(private http: HttpClient) { }
   getProductByID(Id:any){
-    return this.http.get<any>(environment.backEndURL+"getProductById/"+Id);
+    return this.http.get<any>(environment.serverUrl+"getProductById/"+Id);
   }
 }
