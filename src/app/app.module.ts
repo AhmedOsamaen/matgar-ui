@@ -7,18 +7,23 @@ import { NavbarComponent } from './main-components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './Modules/Material.module';
 import { ProductsSearchComponent } from './main-components/products-search/products-search.component';
-
+import { AddProductsComponent } from './main-components/add-products/add-products.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ProductsSearchComponent
+    ProductsSearchComponent,
+    AddProductsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
