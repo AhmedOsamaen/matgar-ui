@@ -1,6 +1,6 @@
+import { ProductsService } from './../../Services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/Modules/product';
-import { ProductService } from 'src/app/services/ProductService';
 @Component({
   selector: 'app-add-products',
   templateUrl: './add-products.component.html',
@@ -9,11 +9,11 @@ import { ProductService } from 'src/app/services/ProductService';
 export class AddProductsComponent implements OnInit {
   public product = new Product();
   private products: Product[] = [];
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductsService) { }
 
   ngOnInit(): void {
    
-    this.productService.getProducts().subscribe( (data: Product[]) => {
+    this.productService.getAllProducts().subscribe( (data: Product[]) => {
       console.log(data)
       this.products = data;
     });
@@ -26,7 +26,7 @@ export class AddProductsComponent implements OnInit {
     console.log(this.product.name)
     this.productService.addProduct(this.product).subscribe( (data: any) => {
       console.log(data)
-      this.productService.getProducts().subscribe( (data: Product[]) => {
+      this.productService.getAllProducts().subscribe( (data: Product[]) => {
         console.log(data)
         this.products = data;
       });
