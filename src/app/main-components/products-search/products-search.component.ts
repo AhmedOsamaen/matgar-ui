@@ -1,3 +1,4 @@
+import { ProductsService } from './../../Services/products.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsSearchComponent implements OnInit {
 
-  constructor() { }
+  productsList=[{name:'Lenovo 1234',shortDescription:'Lenovo Lap',longDescription:'Laptop For Gamers and Non Gamers',price:'124',images:'www'}]
+  constructor(private productService:ProductsService) { }
 
   ngOnInit(): void {
+    this.getAllProducts()
+  }
+  getAllProducts(){
+    return this.productService.getAllProducts().subscribe(response=>{
+      this.productsList=response;
+    })
   }
 
 }
