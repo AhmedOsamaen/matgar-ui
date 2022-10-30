@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductsSearchComponent implements OnInit {
 
-  productsList=[{name:'Lenovo 1234',shortDescription:'Lenovo Lap',longDescription:'Laptop For Gamers and Non Gamers',price:'124',images:'www',id:'123'}]
+  productsList:any=[]
   constructor(private productService:ProductsService , private route: ActivatedRoute) { }
 
   ngOnInit(): void {

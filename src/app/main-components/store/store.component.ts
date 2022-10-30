@@ -8,7 +8,7 @@ import { StoreService } from 'src/app/Services/store.service';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
-  storeList=[{name:'Lenovo 1234',id:'123'}]
+  storeList:any=[]
   constructor(private storeService:StoreService ,private router: Router) { }
 
   ngOnInit(): void {
