@@ -15,6 +15,7 @@ import { AddProductsComponent } from './main-components/add-products/add-product
 import { FormsModule } from '@angular/forms';
 import { StoreComponent } from './main-components/store/store.component';
 import { StoreService } from './Services/store.service';
+import { AddStoresComponent } from './main-components/add-stores/add-stores.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { StoreService } from './Services/store.service';
     ProductsSearchComponent,
     ProductDetailsComponent,
     AddProductsComponent,
-    StoreComponent
+    StoreComponent,
+    AddStoresComponent
   ],
   imports: [
     HttpClientModule,

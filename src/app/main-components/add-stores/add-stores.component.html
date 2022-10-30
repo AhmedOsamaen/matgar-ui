@@ -1,0 +1,29 @@
+<p style="background-color: blue; color: black;width: fit-content;padding: 10px;">Saloooh basha</p><br>
+<div>
+    <form>
+        <div class="form-group">
+
+            <div class="form-title">
+                <h3> Add Store form</h3>
+            </div>
+
+            <div class="form-body">
+                <div >
+                    <div class="form-row">
+                        <label class="form-label" for="StoreName">
+                            {{ "store name" | titlecase }}
+                        </label>
+                        <input  id="StoreName" name="StoreName" type="text" #StoreName class="form-control"
+                            [(ngModel)]="store.name">
+                    </div>
+                    
+                </div>
+               
+               <div class="form-row">
+                <button class="form-button" (click)="submit()" type="button">Add</button>
+               </div>
+                
+            </div>
+        </div>
+    </form>
+</div>
