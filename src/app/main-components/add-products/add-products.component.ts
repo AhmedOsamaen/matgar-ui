@@ -1,6 +1,7 @@
 import { ProductsService } from './../../Services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/Modules/product';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-add-products',
   templateUrl: './add-products.component.html',
@@ -8,28 +9,33 @@ import { Product } from 'src/app/Modules/product';
 })
 export class AddProductsComponent implements OnInit {
   public product = new Product();
-  private products: Product[] = [];
-  constructor(private productService:ProductsService) { }
+  backAPIsService: any;
+  // private products: Product[] = [];
+
+  constructor(private productService: ProductsService, private route: ActivatedRoute,
+    private router: Router) { }
+
+  storeId: any;
 
   ngOnInit(): void {
-   
-    this.productService.getAllProducts().subscribe( (data: Product[]) => {
-      console.log(data)
-      this.products = data;
-    });
+    this.route.url.subscribe(url => {this.storeId = url[1].toString();});
   }
- 
-  submit():void{
-    
+
+  submit(): void {
+
     console.log(" save ")
-    
+
     console.log(this.product.name)
-    this.productService.addProduct(this.product).subscribe( (data: any) => {
+    let prod: any = this.product;
+    prod["store"] = { "id": this.storeId};
+    // prod["store_id"]="5";
+    console.log("prod::", prod);
+    this.productService.addProduct(prod).subscribe((data: any) => {
       console.log(data)
-      this.productService.getAllProducts().subscribe( (data: Product[]) => {
-        console.log(data)
-        this.products = data;
-      });
+      // this.productService.getAllProducts().subscribe((data: Product[]) => {
+      //   console.log(data)
+      //   this.products = data;
+      // });
       // this.products = data;
     });
   }

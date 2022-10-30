@@ -4,11 +4,14 @@ import { ProductDetailsComponent } from './main-components/product-details/produ
 import { ProductsSearchComponent } from './main-components/products-search/products-search.component';
 import { AddProductsComponent } from './main-components/add-products/add-products.component';
 import { MatgarPathsEnum } from './Models/RoutingUrls';
+import { StoreDetailsComponent } from './main-components/store-details/store-details.component';
 
 const routes: Routes = [
   { path: MatgarPathsEnum.productsSearch, component: ProductsSearchComponent},
-  { path: MatgarPathsEnum.productDetails, component: ProductDetailsComponent},
-  { path: MatgarPathsEnum.addProducts, component: AddProductsComponent}
+  { path: MatgarPathsEnum.productDetails+ '/:caserk', component: ProductDetailsComponent},
+  { path: MatgarPathsEnum.addProducts+ '/:caserk', component: AddProductsComponent},
+  { path: MatgarPathsEnum.storeDetails, component: StoreDetailsComponent}
+
 ];
 
 @NgModule({

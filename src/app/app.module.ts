@@ -13,13 +13,15 @@ import { ProductsService } from './Services/products.service';
 import { AddProductsComponent } from './main-components/add-products/add-products.component';
 // import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { StoreDetailsComponent } from './main-components/store-details/store-details.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ProductsSearchComponent,
     ProductDetailsComponent,
-    AddProductsComponent
+    AddProductsComponent,
+    StoreDetailsComponent
   ],
   imports: [
     HttpClientModule,
