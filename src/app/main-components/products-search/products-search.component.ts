@@ -1,6 +1,7 @@
 import { ProductsService } from './../../Services/products.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatgarPathsEnum } from 'src/app/Models/RoutingUrls';
 
 @Component({
   selector: 'app-products-search',
@@ -14,7 +15,7 @@ export class ProductsSearchComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params:any) => {
       if(params['id']!=null){
         console.log("params");
         console.log(params);
@@ -35,6 +36,9 @@ export class ProductsSearchComponent implements OnInit {
     return this.productService.getAllProducts().subscribe(response=>{
       this.productsList=response;
     })
+  }
+  GetProductDetails(id:any){
+    this.router.navigate([MatgarPathsEnum.productDetails+'/', id]);
   }
 
   deleteProduct(id:string){

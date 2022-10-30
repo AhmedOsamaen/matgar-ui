@@ -11,4 +11,7 @@ export class BackAPIsService {
   getProductByID(Id:any){
     return this.http.get<any>(environment.serverUrl+"getProductById/"+Id);
   }
+  getStoreByID(Id:any){
+    return this.http.get<any>(environment.serverUrl+"getStoreById/"+Id);
+  }
 }

@@ -1,7 +1,7 @@
 <div>
     <div class="row">
         <div *ngFor="let product of productsList" class="col-lg-3" >
-            <mat-card class="example-card ">
+            <mat-card class="example-card " (click)="GetProductDetails(product?.id)">
                 <mat-card-header>
                   <!-- <div mat-card-avatar class="example-header-image"></div> -->
                   <mat-card-title>{{product?.name}}</mat-card-title>

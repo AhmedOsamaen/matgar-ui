@@ -16,6 +16,11 @@ export class ProductsService {
   }
 
   addProduct(product:Product):Observable<any>{
+    console.log(" addProduct ")
+    // let url = this.base_url + "addProduct"
+//     return this.http.post(addProduct,product)
+    
+// }
     return this.http.post(addProduct,product)
   }
 
