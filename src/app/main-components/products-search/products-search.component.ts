@@ -1,6 +1,6 @@
 import { ProductsService } from './../../Services/products.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatgarPathsEnum } from 'src/app/Models/RoutingUrls';
 
 @Component({
@@ -11,10 +11,26 @@ import { MatgarPathsEnum } from 'src/app/Models/RoutingUrls';
 export class ProductsSearchComponent implements OnInit {
 
   productsList=[{id:"18",name:'Lenovo 1234',shortDescription:'Lenovo Lap',longDescription:'Laptop For Gamers and Non Gamers',price:'124',images:'www'}]
-  constructor(private productService:ProductsService, private router: Router) { }
+  constructor(private productService:ProductsService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getAllProducts()
+    
+    this.route.queryParams.subscribe((params:any) => {
+      if(params['id']!=null){
+        console.log("params");
+        console.log(params);
+        console.log(params['id']);
+        this.getProductByStoreId(Number(params['id']))
+      }else{
+        this.getAllProducts()
+      }
+     
+  });
+  }
+  getProductByStoreId(id:Number){
+    return this.productService.getProductByStoreId(id).subscribe(response=>{
+      this.productsList=response;
+    })
   }
   getAllProducts(){
     return this.productService.getAllProducts().subscribe(response=>{
@@ -24,4 +40,11 @@ export class ProductsSearchComponent implements OnInit {
   GetProductDetails(id:any){
     this.router.navigate([MatgarPathsEnum.productDetails+'/', id]);
   }
+
+  deleteProduct(id:string){
+     this.productService.deleteProduct(+id).subscribe(response=>{
+      this.getAllProducts();
+    })
+  }
+
 }

@@ -14,6 +14,9 @@ import { AddProductsComponent } from './main-components/add-products/add-product
 // import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { StoreDetailsComponent } from './main-components/store-details/store-details.component';
+import { StoreComponent } from './main-components/store/store.component';
+import { StoreService } from './Services/store.service';
+import { AddStoresComponent } from './main-components/add-stores/add-stores.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,9 @@ import { StoreDetailsComponent } from './main-components/store-details/store-det
     ProductsSearchComponent,
     ProductDetailsComponent,
     AddProductsComponent,
-    StoreDetailsComponent
+    StoreDetailsComponent,
+    StoreComponent,
+    AddStoresComponent
   ],
   imports: [
     HttpClientModule,
@@ -32,7 +37,7 @@ import { StoreDetailsComponent } from './main-components/store-details/store-det
     MaterialModule,
     FormsModule
   ],
-  providers: [ProductsService],
+  providers: [ProductsService,StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

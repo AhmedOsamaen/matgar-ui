@@ -3,4 +3,6 @@ export enum MatgarPathsEnum {
     productDetails = 'product-details',
     addProducts = 'add-products',
     storeDetails = 'store-details',
+    store = 'store',
+    addStore = 'add-stores'
 }

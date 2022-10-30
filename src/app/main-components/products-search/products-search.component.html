@@ -16,6 +16,9 @@
                 <mat-card-actions>
                   <button mat-button>Save For Later</button>
                   <button mat-button>Add to Cart</button>
+                  <button mat-mini-fab color="warn" aria-label="Example icon button with a plus one icon" class="delete-button" (click)="deleteProduct(product.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
                 </mat-card-actions>
               </mat-card>
         </div>
