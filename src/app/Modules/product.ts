@@ -1,5 +1,3 @@
-import { Store } from "./store";
-
 export class Product{
     public name!: string;
     public shortDescription!: string;
@@ -8,7 +6,7 @@ export class Product{
     public quantity!: string;
     public discount!: string;
     public maximumDiscountValue!: string;
-    public store!:Store;
+    
     constructor(
     ){}
     

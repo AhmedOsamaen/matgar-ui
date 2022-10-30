@@ -1,104 +1,80 @@
-<p style="background-color: blue; color: black;width: fit-content;padding: 10px;">Saloooh basha</p><br>
+<p style="background-color: blue; color: black;width: fit-content;padding: 10px;">Saloooh basha</p>
 <div>
-    <form>
+    <form class="center">
         <div class="form-group">
 
-            <div class="form-title">
-                <h3> Add product form</h3>
+            <div>
+                <p class="form-title"> add product form</p>
             </div>
-
             <div class="form-body">
-                <div >
+                <div class="form-row">
+                    <label class="form-label">
+                        {{ "product name" | titlecase }}
+                    </label>
+                    <input class="form-control" name="Product Name" type="text" #PRODUCT_NAME
+                        [(ngModel)]="product.name">
+                </div>
+                <div>
                     <div class="form-row">
-                        <label class="form-label" for="ProductName">
-                            {{ "product name" | titlecase }}
+                        <label class="form-label">
+                            {{ "shortDescription" | titlecase }}
                         </label>
-                        <input  id="ProductName" name="ProductName" type="text" #PRODUCT_NAME class="form-control"
-                            [(ngModel)]="product.name">
-                    </div>
-                    <div class="form-row">
-                        <div >
-                            <label class="form-label" for="shortDescription">
-                                {{ "shortDescription" | titlecase }}
-                            </label>
-                            <input id="shortDescription" name="shortDescription" type="text" #shortDescription
-                            class="form-control" [(ngModel)]="product.shortDescription">
-    
-                        </div>
+                        <input class="form-control" name="shortDescription" type="text" #shortDescription
+                            [(ngModel)]="product.shortDescription">
+
                     </div>
                 </div>
-               
-                <div >
+                <div>
                     <div class="form-row">
-                        <label class="form-label" for="longDescription">
+                        <label class="form-label">
                             {{ "longDescription" | titlecase }}
                         </label>
-                        <input class="form-control" name="longDescription" type="text" #longDescription class="form-control"
-                            id="longDescription" [(ngModel)]="product.longDescription">
-                    </div>
-                    <div class="form-row">
-                        <div >
-                            <label class="form-label" for="price">
-                                {{ "price" | titlecase }}
-                            </label>
-                            <input class="form-control" name="price" type="text" #price
-                               id="price" [(ngModel)]="product.price" class="form-control">
+                        <input class="form-control" name="longDescription" type="text" #longDescription
+                            [(ngModel)]="product.longDescription">
 
-                        </div>
                     </div>
                 </div>
-
-                <div >
+                <div>
                     <div class="form-row">
-                        <label class="form-label" for="quantity">
+                        <label class="form-label">
+                            {{ "price" | titlecase }}
+                        </label>
+                        <input class="form-control" name="price" type="text" #price
+                            [(ngModel)]="product.price">
+
+                    </div>
+                </div>
+                <div>
+                    <div class="form-row">
+                        <label class="form-label">
                             {{ "quantity" | titlecase }}
                         </label>
                         <input class="form-control" name="quantity" type="text" #quantity
-                        id="quantity" [(ngModel)]="product.quantity">
+                            [(ngModel)]="product.quantity">
 
-                    </div>
-                    <div class="form-row">
-                        <div >
-                            <label class="form-label" for="discount">
-                                {{ "discount" | titlecase }}
-                            </label>
-                            <input class="form-control" name="discount" type="text" #discount
-                            id="discount"  [(ngModel)]="product.discount">
-
-                        </div>
                     </div>
                 </div>
-
-                <div >
+                <div>
                     <div class="form-row">
-                        <label class="form-label" for="maximumDiscountValue">
+                        <label class="form-label">
+                            {{ "discount" | titlecase }}
+                        </label>
+                        <input class="form-control" name="discount" type="text" #discount
+                            [(ngModel)]="product.discount">
+
+                    </div>
+                </div>
+                <div>
+                    <div class="form-row">
+                        <label class="form-label">
                             {{ "maximumDiscountValue" | titlecase }}
                         </label>
                         <input class="form-control" name="maximumDiscountValue" type="text" #maximumDiscountValue
-                        id="maximumDiscountValue" [(ngModel)]="product.maximumDiscountValue">
+                            [(ngModel)]="product.maximumDiscountValue">
 
-                    </div>
-                    <div class="form-row">
-                        <div >
-                            <label class="form-label" for="stores">
-                                {{ "stores" | titlecase }}
-                            </label>
-                            <select [(ngModel)]="id" id="stores" name="stores">
-                                <option *ngFor="
-                                let store of getStores()
-                              " [value]="store.id">
-                              {{ store.name }}
-                            </option>
-                            </select>
-
-                        </div>
                     </div>
                 </div>
-
-               <div class="form-row">
-                <button class="form-button" (click)="submit()" type="button">Add</button>
-               </div>
-                
+                <button class="mat-button" (click)="submit()" type="button">add</button>
             </div>
         </div>
     </form>
