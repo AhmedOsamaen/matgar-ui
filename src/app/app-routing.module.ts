@@ -4,11 +4,13 @@ import { ProductDetailsComponent } from './main-components/product-details/produ
 import { ProductsSearchComponent } from './main-components/products-search/products-search.component';
 import { AddProductsComponent } from './main-components/add-products/add-products.component';
 import { MatgarPathsEnum } from './Models/RoutingUrls';
+import { StoreComponent } from './main-components/store/store.component';
 
 const routes: Routes = [
   { path: MatgarPathsEnum.productsSearch, component: ProductsSearchComponent},
   { path: MatgarPathsEnum.productDetails, component: ProductDetailsComponent},
-  { path: MatgarPathsEnum.addProducts, component: AddProductsComponent}
+  { path: MatgarPathsEnum.addProducts, component: AddProductsComponent},
+  { path: MatgarPathsEnum.store, component: StoreComponent}
 ];
 
 @NgModule({

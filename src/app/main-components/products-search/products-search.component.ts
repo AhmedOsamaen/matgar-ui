@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsSearchComponent implements OnInit {
 
-  productsList=[{name:'Lenovo 1234',shortDescription:'Lenovo Lap',longDescription:'Laptop For Gamers and Non Gamers',price:'124',images:'www'}]
+  productsList=[{name:'Lenovo 1234',shortDescription:'Lenovo Lap',longDescription:'Laptop For Gamers and Non Gamers',price:'124',images:'www',id:'123'}]
   constructor(private productService:ProductsService) { }
 
   ngOnInit(): void {
@@ -17,6 +17,12 @@ export class ProductsSearchComponent implements OnInit {
   getAllProducts(){
     return this.productService.getAllProducts().subscribe(response=>{
       this.productsList=response;
+    })
+  }
+
+  deleteProduct(id:string){
+     this.productService.deleteProduct(+id).subscribe(response=>{
+      this.getAllProducts();
     })
   }
 

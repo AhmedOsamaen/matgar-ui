@@ -13,13 +13,16 @@ import { ProductsService } from './Services/products.service';
 import { AddProductsComponent } from './main-components/add-products/add-products.component';
 // import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { StoreComponent } from './main-components/store/store.component';
+import { StoreService } from './Services/store.service';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ProductsSearchComponent,
     ProductDetailsComponent,
-    AddProductsComponent
+    AddProductsComponent,
+    StoreComponent
   ],
   imports: [
     HttpClientModule,
@@ -30,7 +33,7 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule
   ],
-  providers: [ProductsService],
+  providers: [ProductsService,StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

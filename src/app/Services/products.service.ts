@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { addProduct, getAllProducts } from '../Models/ServerRoutingUrls';
+import { addProduct, deleteProductById, getAllProducts } from '../Models/ServerRoutingUrls';
 import { Product } from '../Modules/product';
 
 @Injectable({
@@ -16,17 +16,10 @@ export class ProductsService {
   }
 
   addProduct(product:Product):Observable<any>{
-    console.log(" addProduct ")
-    // let url = this.base_url + "addProduct"
-    return this.http.post(addProduct,{
-        "name":product.name,
-        "shortDescription":product.shortDescription,
-        "longDescription":product.longDescription,
-        "price":product.price,
-        "quantity":product.quantity,
-        "discount":product.discount,
-        "maximumDiscountValue":product.maximumDiscountValue
-    })
-    
-}
+    return this.http.post(addProduct,product)
+  }
+
+  deleteProduct(productId:Number){
+    return this.http.get(deleteProductById+productId,{responseType:'text'})
+  }
 }
