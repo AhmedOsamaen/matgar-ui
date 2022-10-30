@@ -1,5 +1,6 @@
 import { ProductsService } from './../../Services/products.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products-search',
@@ -9,10 +10,26 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsSearchComponent implements OnInit {
 
   productsList=[{name:'Lenovo 1234',shortDescription:'Lenovo Lap',longDescription:'Laptop For Gamers and Non Gamers',price:'124',images:'www',id:'123'}]
-  constructor(private productService:ProductsService) { }
+  constructor(private productService:ProductsService , private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getAllProducts()
+    
+    this.route.queryParams.subscribe(params => {
+      if(params['id']!=null){
+        console.log("params");
+        console.log(params);
+        console.log(params['id']);
+        this.getProductByStoreId(Number(params['id']))
+      }else{
+        this.getAllProducts()
+      }
+     
+  });
+  }
+  getProductByStoreId(id:Number){
+    return this.productService.getProductByStoreId(id).subscribe(response=>{
+      this.productsList=response;
+    })
   }
   getAllProducts(){
     return this.productService.getAllProducts().subscribe(response=>{

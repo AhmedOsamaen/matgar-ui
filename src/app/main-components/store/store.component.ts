@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { StoreService } from 'src/app/Services/store.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { StoreService } from 'src/app/Services/store.service';
 })
 export class StoreComponent implements OnInit {
   storeList=[{name:'Lenovo 1234',id:'123'}]
-  constructor(private storeService:StoreService) { }
+  constructor(private storeService:StoreService ,private router: Router) { }
 
   ngOnInit(): void {
     this.getAllStores()
@@ -25,5 +26,14 @@ export class StoreComponent implements OnInit {
      this.getAllStores();
    })
  }
+
+ navigate(id:string) {
+  let navigationExtras: NavigationExtras = {
+      queryParams: {
+          id: id
+      }
+  }
+  this.router.navigate(['products-search'], navigationExtras);
+}
 
 }
