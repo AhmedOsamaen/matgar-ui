@@ -18,15 +18,7 @@ export class ProductsService {
   addProduct(product:Product):Observable<any>{
     console.log(" addProduct ")
     // let url = this.base_url + "addProduct"
-    return this.http.post(addProduct,{
-        "name":product.name,
-        "shortDescription":product.shortDescription,
-        "longDescription":product.longDescription,
-        "price":product.price,
-        "quantity":product.quantity,
-        "discount":product.discount,
-        "maximumDiscountValue":product.maximumDiscountValue
-    })
+    return this.http.post(addProduct,product)
     
 }
 }
