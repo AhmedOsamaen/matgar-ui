@@ -1,0 +1,29 @@
+.address-form{
+    margin: 10px;
+}
+
+.address-list{
+    margin: 15px;
+}
+
+:host::ng-deep.mat-form-field-infix {
+    width:30vw;
+}
+
+.save-button{
+    position: relative;
+    left: 20%;
+    nav-down: 10%;
+    width: 300px;
+}
+
+.example-card {
+    max-width: 400px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+  }
+  .example-card:hover {
+   background-color: rgb(140, 140, 140);
+   transform: scale(1.05);
+  }
