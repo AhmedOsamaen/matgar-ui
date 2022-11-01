@@ -9,6 +9,7 @@ export class Product{
     public discount!: string;
     public maximumDiscountValue!: string;
     public store!:Store;
+    public images!:string;
     constructor(
     ){}
     

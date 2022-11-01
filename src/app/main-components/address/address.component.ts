@@ -47,18 +47,20 @@ export class AddressComponent implements OnInit {
 
   }
   saveAddressToUser(){
-    // this.address['user']={id:12};
-    // delete this.address['store']
-    // delete this.address['user']
     return this.paymentService.addAddress(this.address).subscribe(response=>{
       this.snackBar.open(response,'Close',{verticalPosition:'top' ,duration:2000})
       this.getAllAddressesForUser()
-      this.addressForm.resetForm();
+      this.clearForm();
     })
   }
   updateForm(addressItem:Address){
     this.address=JSON.parse(JSON.stringify(addressItem));
     this.addressSection=true;
+  }
+  clearForm(){
+    this.addressForm.resetForm();
+    var member:any;
+    this.address=new Address;
   }
 
 }
