@@ -19,6 +19,8 @@ import { StoreService } from './Services/store.service';
 import { AddStoresComponent } from './main-components/add-stores/add-stores.component';
 import { AddressComponent } from './main-components/address/address.component';
 import { PaymentService } from './Services/payment.service';
+import { PaymentComponent } from './main-components/payment/payment.component';
+import { AddPaymentComponent } from './main-components/add-payment/add-payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { PaymentService } from './Services/payment.service';
     StoreDetailsComponent,
     StoreComponent,
     AddStoresComponent,
-    AddressComponent
+    AddressComponent,
+    PaymentComponent,
+    AddPaymentComponent
   ],
   imports: [
     HttpClientModule,
