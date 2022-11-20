@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { MatgarPathsEnum } from 'src/app/Models/RoutingUrls';
 import { StoreService } from 'src/app/Services/store.service';
 
 @Component({
@@ -33,7 +34,7 @@ export class StoreComponent implements OnInit {
           id: id
       }
   }
-  this.router.navigate(['products-search'], navigationExtras);
+  this.router.navigate([MatgarPathsEnum.storeDetails], navigationExtras);
 }
 
 }
