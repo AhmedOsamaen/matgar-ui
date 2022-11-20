@@ -4,5 +4,8 @@ export enum MatgarPathsEnum {
     addProducts = 'add-products',
     storeDetails = 'store-details',
     store = 'store',
-    addStore = 'add-stores'
+    addStore = 'add-stores',
+    address = 'address/:userId',
+    payment = 'payment',
+    addPayment = 'addPayment'
 }

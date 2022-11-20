@@ -10,8 +10,8 @@ import { MatgarPathsEnum } from 'src/app/Models/RoutingUrls';
 })
 export class ProductsSearchComponent implements OnInit {
 
-  productsList=[{id:"18",name:'Lenovo 1234',shortDescription:'Lenovo Lap',longDescription:'Laptop For Gamers and Non Gamers',price:'124',images:'www'}]
-  constructor(private productService:ProductsService, private router: Router, private route: ActivatedRoute) { }
+  productsList:any=[]
+  constructor(private productService:ProductsService , private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     

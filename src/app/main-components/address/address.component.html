@@ -1,0 +1,101 @@
+<div>
+    <br>
+    <div class="address-form">
+        <mat-accordion>
+            <mat-expansion-panel hideToggle [expanded]="addressSection">
+              <mat-expansion-panel-header (click)="addressSection = !addressSection">
+                <mat-panel-title>
+                  Add New Address
+                </mat-panel-title>
+                <mat-panel-description>
+                  Address Details
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="form-fields">
+                <form #form="ngForm" >
+                <div class="row">
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ "street"  }}</mat-label>
+                            <input matInput [(ngModel)]="address.street" name="street"  type="text" />
+                          </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ "buildingNum"  }}</mat-label>
+                            <input matInput [(ngModel)]="address.buildingNum" name="buildingNum"  type="text" />
+                          </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ "country"  }}</mat-label>
+                            <input matInput [(ngModel)]="address.country" name="country"  type="text" />
+                          </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ "state"  }}</mat-label>
+                            <input matInput [(ngModel)]="address.state"name="state"  type="text" />
+                          </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ "city"  }}</mat-label>
+                            <input matInput [(ngModel)]="address.city"name="city"  type="text" />
+                          </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ "town"  }}</mat-label>
+                            <input matInput [(ngModel)]="address.town"name="town"  type="text" />
+                          </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ "Full Address"  }}</mat-label>
+                            <input matInput [(ngModel)]="address.fullAdrs"name="fullAdrs" required  type="text" />
+                          </mat-form-field>
+                    </div>
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{ "postal Code"  }}</mat-label>
+                            <input matInput [(ngModel)]="address.postalCode"name="postalCode"  type="text" />
+                          </mat-form-field>
+                    </div>
+
+                    <div class="save-button">
+                        <button type="button"  [disabled]="form.invalid" class="btn btn-primary" (click)="saveAddressToUser()" >Save Address</button>
+                        <button type="button" style="margin-left: 5px;" class="btn btn-danger" (click)="clearForm()" >Clear</button>
+                    </div>
+                   
+                </div>
+                </form>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+    </div>
+    <br>
+    <hr>
+
+    <div class="row address-list">
+        <div *ngFor="let addressItem of addressList" class="col-lg-4" >
+            <mat-card class="example-card "  (click)="updateForm(addressItem) ">
+                <mat-card-header>
+                  <!-- <div mat-card-avatar class="example-header-image"></div> -->
+                  <mat-card-title>{{addressItem.fullAdrs}}</mat-card-title>
+                </mat-card-header>
+                <!-- <mat-card-content>
+                  <p>
+                    {{product.longDescription}}
+                  </p>
+                </mat-card-content> -->
+                <mat-card-actions>
+                  <button mat-mini-fab color="warn" aria-label="Example icon button with a plus one icon" (click)="$event.stopPropagation();deleteAddress(addressItem.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+    </div>
+    
+</div>
