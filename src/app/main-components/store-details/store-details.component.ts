@@ -1,7 +1,7 @@
+import { MatgarPathsEnum } from './../../Models/RoutingUrls';
+import { BackAPIsService } from './../../Services/back-apis.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { MatgarPathsEnum } from 'src/app/Models/RoutingUrls';
-import { BackAPIsService } from 'src/app/services/back-apis.service';
 import { StoreService } from 'src/app/Services/store.service';
 
 @Component({

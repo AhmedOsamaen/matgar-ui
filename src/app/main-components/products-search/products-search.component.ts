@@ -1,7 +1,10 @@
+import { OrderProduct } from './../../Models/OrderProduct';
+import { Product } from './../../Modules/product';
 import { ProductsService } from './../../Services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatgarPathsEnum } from 'src/app/Models/RoutingUrls';
+import { ProductCart } from 'src/app/Models/ProductCart';
 
 @Component({
   selector: 'app-products-search',
@@ -45,6 +48,28 @@ export class ProductsSearchComponent implements OnInit {
      this.productService.deleteProduct(+id).subscribe(response=>{
       this.getAllProducts();
     })
+  }
+
+  addItemToCart(product:ProductCart){
+    //! saved order id is 24
+    console.log('product :>> ', product);
+    const productOrder :OrderProduct ={order:{id:24},product:{id:product.id}} 
+    product.cartItemsCount?product.cartItemsCount++:product.cartItemsCount=1;
+    this.productService.addProductToOrder(productOrder).subscribe(response=>{
+    this.productService.cartItems.next('add');
+      console.log('saved Successfully :>> ');
+    })
+  }
+  removeItemFromCart(product:ProductCart){
+     //! saved order id is 24
+     console.log('product :>> ', product);
+     const productOrder :OrderProduct ={order:{id:24},product:{id:product.id}} 
+     
+     this.productService.deleteProductFromOrder(productOrder).subscribe(response=>{
+      product.cartItemsCount--;
+      this.productService.cartItems.next('sub');
+       console.log('deleted Successfully :>> ');
+     })
   }
 
 }

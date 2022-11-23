@@ -1,8 +1,12 @@
 import { environment } from "src/environments/environment";
 
 export const getAllProducts = environment.serverUrl+'getAllProducts'
+export const getCartCount = environment.serverUrl+'getCartCount'
+export const getCartCountByOrderAndProduct = environment.serverUrl+'getCartCountByOrderAndProduct'
+export const deleteOrderProduct = environment.serverUrl+'deleteOrderProduct'
 export const getAllStores = environment.serverUrl+'getAllStores'
 export const addProduct = environment.serverUrl+'addProduct'
+export const addorder_product = environment.serverUrl+'addorder_product'
 export const deleteProductById = environment.serverUrl+'deleteProductById/'
 export const deleteStoreById = environment.serverUrl+'deleteStoreById/'
 export const addStore = environment.serverUrl+'saveStore/'

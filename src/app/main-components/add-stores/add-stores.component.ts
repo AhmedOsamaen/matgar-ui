@@ -28,7 +28,7 @@ export class AddStoresComponent implements OnInit {
     
     console.log(this.store.name)
     let user =  new User();
-    user.id = 13;
+    user.id = 12;
     this.store.user = user 
     this.storeService.addStore(this.store).subscribe( (data: any) => {
       console.log(data)

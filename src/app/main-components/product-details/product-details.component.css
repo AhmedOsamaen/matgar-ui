@@ -73,6 +73,12 @@ html, body {
   .color-choose div {
     display: inline-block;
   }
+  .increment{
+    /* background-color: #64af3d; */
+  }
+  .mat-input-element{
+    text-align: center !important;
+  }
 /*    
   .color-choose input[type=&amp;quot;radio&amp;quot;] {
     display: none;

@@ -62,7 +62,16 @@
     <!-- Product Pricing -->
     <div class="product-price">
       <span>{{product?.price}}$</span>
-      <a href="#" class="cart-btn">Add to cart</a>
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="addItemToCart(product)" *ngIf="cartItemsCount>0">
+        <mat-icon>add_box</mat-icon>
+      </button>
+      <mat-form-field appearance="outline" *ngIf="cartItemsCount>0" class="increment">
+        <input matInput [(ngModel)]="cartItemsCount"name="postalCode"  type="text" />
+      </mat-form-field>
+      <a (click)="addItemToCart(product)" class="cart-btn" *ngIf="cartItemsCount==0">Add to cart</a>
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="removeItemFromCart(product)" *ngIf="cartItemsCount>0">
+        <mat-icon>remove</mat-icon>
+      </button>
     </div>
   </div>
 </main>
