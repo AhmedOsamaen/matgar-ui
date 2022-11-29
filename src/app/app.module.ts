@@ -21,6 +21,7 @@ import { AddressComponent } from './main-components/address/address.component';
 import { PaymentService } from './Services/payment.service';
 import { PaymentComponent } from './main-components/payment/payment.component';
 import { AddPaymentComponent } from './main-components/add-payment/add-payment.component';
+import { AddressListComponent } from './main-components/address/address-list/address-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { AddPaymentComponent } from './main-components/add-payment/add-payment.c
     AddStoresComponent,
     AddressComponent,
     PaymentComponent,
-    AddPaymentComponent
+    AddPaymentComponent,
+    AddressListComponent
   ],
   imports: [
     HttpClientModule,
