@@ -8,6 +8,8 @@ export interface DialogData {
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Payment } from 'src/app/Models/Payment';
+import { UserService } from 'src/app/Services/user.service';
 import { AddPaymentComponent } from '../add-payment/add-payment.component';
 
 @Component({
@@ -17,9 +19,10 @@ import { AddPaymentComponent } from '../add-payment/add-payment.component';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(private router: Router,public dialog: MatDialog) { }
+  constructor(private router: Router,public dialog: MatDialog,private userService:UserService) { }
 
   ngOnInit(): void {
+    this.getPaymentss()
   }
 
   name=""
@@ -36,10 +39,24 @@ export class PaymentComponent implements OnInit {
       this.animal = result;
     });
   }
-
-  addPaymentCard():void{
-   
-    this.router.navigate(['addPayment']);
+  payments: Payment[] = [];
+ 
+  getPaymentss() {
     
+    this.userService.getUserPayments("13").subscribe( (data: Payment[]) => {
+      console.log(data)
+      this.payments =  data
+    });
+    return this.payments;
   }
+  getPayments(){
+    
+    
+    return this.payments; 
+  }
+  // addPaymentCard():void{
+   
+  //   this.router.navigate(['addPayment']);
+    
+  // }
 }
