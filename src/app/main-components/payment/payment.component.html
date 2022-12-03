@@ -37,12 +37,12 @@
                   </div>
                 </label>
 
-              <div *ngFor="let payments of  getPayments()">
+              <div *ngFor="let payment of  payments">
                 <input   class="btn-check" name="options"  autocomplete="off" />
                 <label class="btn btn-outline-primary btn-lg" >
                   <div class="d-flex justify-content-between">
-                    <span>{{payments}} </span>
-                    <span>**** {{payments}}</span>
+                    <span>{{payment}} </span>
+                    <span>**** {{payment}}</span>
                   </div>
                 </label>
               </div>
@@ -57,41 +57,156 @@
         <div class="p-3" style="background-color: #eee;">
           <span class="fw-bold">Order Recap</span>
           <div class="d-flex justify-content-between mt-2">
-            <span>contracted Price</span> <span>$186.86</span>
+            <strong><h2>Subtotal </h2></strong> <span>$ {{ getTotalPrice() }}</span>
           </div>
           <div class="d-flex justify-content-between mt-2">
-            <span>Amount Deductible</span> <span>$0.0</span>
+            <span>Discount</span> <span>$0.0</span>
           </div>
           <div class="d-flex justify-content-between mt-2">
-            <span>Coinsurance(0%)</span> <span>+ $0.0</span>
+            <span>Taxes ( Included )</span> <span>+ $0.0</span>
           </div>
           <div class="d-flex justify-content-between mt-2">
-            <span>Copayment </span> <span>+ 40.00</span>
-          </div>
-          <hr />
-          <div class="d-flex justify-content-between mt-2">
-            <span class="lh-sm">Total Deductible,<br />
-              Coinsurance and copay
-            </span>
-            <span>$40.00</span>
-          </div>
-          <div class="d-flex justify-content-between mt-2">
-            <span class="lh-sm">Maximum out-of-pocket <br />
-              on insurance policy</span>
-            <span>$40.00</span>
+            <span>Shipping (with options(metro , motor)) </span> <span>+ 40.00</span>
           </div>
           <hr />
           <div class="d-flex justify-content-between mt-2">
-            <span>Insurance Responsibility </span> <span>$71.76</span>
+            <span>Gift Card </span> <span>+ 40.00</span>
           </div>
-          <div class="d-flex justify-content-between mt-2">
-            <span>Patient Balance </span> <span>$13.24</span>
-          </div>
+          
           <hr />
           <div class="d-flex justify-content-between mt-2">
-            <span>Total </span> <span class="text-success">$85.00</span>
+            <strong><h2>Total </h2> </strong> <span class="text-success">$85.00</span>
+          </div>
+          <div>
+            <button class="btn   btn-block" style="background-color: #FFC0CB;" >
+              Gift Card (Promo)</button>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  
+<section>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-secondary d-flex justify-content-between">
+    <a class="navbar-brand" href="#">INVOICE</a>
+    
+</nav>
+<form #invoiceForm="ngForm">
+    <div class="container-fluid pt-2 mb-5">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card border-secondary">
+                    <div class="card-body">
+                        <h4 class="card-title">Customer Details</h4>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        [ngClass]="{'is-invalid': invoiceForm.submitted && CustName.invalid}"
+                                        [(ngModel)]="invoice.customerName" #CustName="ngModel" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <textarea class="form-control" name="address" id="address" row="3"
+                                        [ngClass]="{'is-invalid': invoiceForm.submitted && Address.invalid}"
+                                        [(ngModel)]="invoice.address" #Address="ngModel" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="email">Email ID</label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        [(ngModel)]="invoice.email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactNo">Contact No.</label>
+                                    <input type="number" class="form-control" name="contactNo" id="contactNo"
+                                        [ngClass]="{'is-invalid': invoiceForm.submitted && ContactNo.invalid}"
+                                        [(ngModel)]="invoice.contactNo" #ContactNo="ngModel" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-secondary mt-2" style="background-color:palevioletred ;">
+                    <div class="card-body">
+                        <h4 class="card-title d-flex justify-content-between">Order Details <button type="button"
+                                class="btn btn-secondary" >+</button></h4>
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="20%">Product</th>
+                                        <th width="20%">Price</th>
+                                        <th width="20%">Quantity</th>
+                                        <th width="20%">Total</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of products; let i=index">
+                                        <td scope="row">
+                                            <input type="text" class="form-control" name="productName{{i}}"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductName.invalid}"
+                                                id="productName" [(ngModel)]="product.name" #ProductName="ngModel"
+                                                required [readonly]="true">
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" name="price{{i}}" id="price"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductPrice.invalid}"
+                                                [(ngModel)]="product.price" #ProductPrice="ngModel" required [readonly]="true">
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" name="quantity{{i}}" id="quantity"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductQty.invalid}"
+                                                [(ngModel)]="product.quantity" #ProductQty="ngModel" required
+                                                [readonly]="productsEdit[i]"
+                                                [ngStyle]="{'background-color':productsEdit[i] === true ? 'palevioletred' : '' }"
+                                                >
+                                        </td>
+                                        <td >
+                                            <!-- {{product.price * product.quantity || ''}} -->
+                                            {{calculatePrice(product.quantity,product.price)}}
+                                        </td>
+                                        <h4 class="card-title d-flex justify-content-between"><button type="button"
+                                          class="btn btn-secondary" (click)="edit(i)">Edit = {{!productsEdit[i]}}</button></h4>
+                                    </tr>
+                                    <tr>
+                                      <td><h3 width="50%"> Total ->   </h3> </td>
+                                      
+                                      <td><h3 width="25%">TQ : {{ getTotalQuantity() }}   </h3>  </td>
+                                      <td><h3 width="25%">TP : {{ getTotalPrice() }}   </h3>  </td>
+                                     
+                                    </tr>
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-secondary btn-lg btn-block"
+                    (click)="invoiceForm.valid ? '' : ''">Download Invoice</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block"
+                    (click)="invoiceForm.valid ? '' : ''">Print
+                    Invoice</button>
+                <button type="submit" class="btn btn-secondary btn-lg btn-block"
+                    (click)="invoiceForm.valid ? '' : ''">Open
+                    Invoice</button>
+            </div>
+        </div>
+    </div>
+</form>
+<footer class="fixed-bottom">
+    <div class="bg-light text-center p-2">
+        <h6>Made with 💗 by
+            <a class="twitter-follow-button"  target="_blank"> <i class="fa fa-twitter"
+                    aria-hidden="true"></i>Ankit_NgDevelop</a>.
+        </h6>
+    </div>
+</footer>
+</section>
