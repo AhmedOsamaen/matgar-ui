@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Payment } from 'src/app/Models/Payment';
 import { User } from 'src/app/Modules/User';
+import { PaymentService } from 'src/app/Services/payment.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -11,8 +12,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AddPaymentComponent implements OnInit {
 
-  constructor(private userService:UserService,
-    @Inject(MAT_DIALOG_DATA) public data: any,public dialog:MatDialog) { }
+  constructor(private paymentService:PaymentService,
+    @Inject(MAT_DIALOG_DATA) public data: any,public matDialogRef: MatDialogRef<AddPaymentComponent>) { }
 
   ngOnInit(): void {
 
@@ -35,16 +36,21 @@ export class AddPaymentComponent implements OnInit {
         this.payment.last_three_number_back = i.value
         
       }
-  }
+      if( i.name ==="cardName" ){
+        this.payment.cardName = i.value
+        
+      }
+    }
 
     console.log("cardHolderName :- " + this.payment.cardHolderName)
     console.log("cardNumber :- " + this.payment.cardNumber)
     console.log("last_three_number_back :- " + this.payment.last_three_number_back)
     this.payment.user = this.data.user
     
-    return this.userService.addPayment(this.payment).subscribe( (data: any) => {
-      console.log(data)
-      this.dialog.closeAll
+    return this.paymentService.addPayment(this.payment).subscribe( (data: any) => {
+      console.log("data:- " + data)
+     
+      this.matDialogRef.close(data)
     });
   }
 }

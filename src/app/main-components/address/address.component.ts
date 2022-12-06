@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Address } from 'src/app/Models/Address';
-import { PaymentService } from 'src/app/Services/payment.service';
+import { AddressService } from 'src/app/Services/address.service';
 
 @Component({
   selector: 'app-address',
@@ -19,7 +19,7 @@ export class AddressComponent implements OnInit {
   addressSection=false;
   @ViewChild('form') addressForm!:NgForm;
   constructor(private route: ActivatedRoute,
-    private paymentService:PaymentService,
+    private addressService:AddressService,
     private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class AddressComponent implements OnInit {
 
   
   saveAddressToUser(){
-    return this.paymentService.addAddress(this.address).subscribe(response=>{
+    return this.addressService.addAddress(this.address).subscribe(response=>{
       this.snackBar.open(response,'Close',{verticalPosition:'top' ,duration:2000})
       // this.getAllAddressesForUser()
       this.sentNewaddress=JSON.parse(JSON.stringify(this.address));

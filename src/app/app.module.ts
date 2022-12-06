@@ -18,9 +18,10 @@ import { StoreComponent } from './main-components/store/store.component';
 import { StoreService } from './Services/store.service';
 import { AddStoresComponent } from './main-components/add-stores/add-stores.component';
 import { AddressComponent } from './main-components/address/address.component';
+import { AddressService } from './Services/address.service';
 import { PaymentService } from './Services/payment.service';
 import { PaymentComponent } from './main-components/payment/payment.component';
-import { AddPaymentComponent } from './main-components/add-payment/add-payment.component';
+import { AddPaymentComponent } from './main-components/payment/add-payment/add-payment.component';
 import { AddressListComponent } from './main-components/address/address-list/address-list.component';
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { AddressListComponent } from './main-components/address/address-list/add
     MaterialModule,
     FormsModule
   ],
-  providers: [ProductsService,StoreService,PaymentService],
+  providers: [ProductsService,StoreService,AddressService,PaymentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

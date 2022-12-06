@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Address } from '../Models/Address';
-import { getAddressByUserId, getAllAddresses, saveAddressUrl } from '../Models/ServerRoutingUrls';
+import { Payment } from '../Models/Payment';
+import { addUserPayment } from '../Models/ServerRoutingUrls';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +13,10 @@ export class PaymentService {
 
   constructor(private http:HttpClient) { }
 
-  getAllAddresses(){
-    return this.http.get<[]>(getAllAddresses)
-  }
-
-  getAllAddressesById(id: any) {
-    return this.http.get<[]>(getAddressByUserId+id)
-  }
-
-  addAddress(address:Address){
-    return this.http.post(saveAddressUrl,address,{responseType:'text'});
+  addPayment(payment: Payment):Observable<any>{
+    console.log(  "payment:- " + payment.cardHolderName)
+    return this.http.post(addUserPayment,payment)
+    
   }
 
   

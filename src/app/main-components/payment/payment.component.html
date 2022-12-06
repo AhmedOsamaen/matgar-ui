@@ -40,9 +40,12 @@
               <div *ngFor="let payment of  payments">
                 <input   class="btn-check" name="options"  autocomplete="off" />
                 <label class="btn btn-outline-primary btn-lg" >
+                  <p>{{payment.cardName}} </p>
                   <div class="d-flex justify-content-between">
-                    <span>{{payment.cardNumber}} </span>
-                    <span>  **** {{payment.last_three_number_back}}</span>
+                    
+                   
+                    <span>{{payment.cardNumber}} **** {{payment.last_three_number_back}}</span>
+                    
                   </div>
                 </label>
               </div>

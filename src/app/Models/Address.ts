@@ -12,7 +12,7 @@ export class Address{
     public fullAdrs?: string;
     public postalCode?:string;
     public store?:Store;
-    public user?:User={id:12};
+    public user?:User={id:13};
     constructor(
     ){}
 }

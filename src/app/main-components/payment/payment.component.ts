@@ -12,7 +12,7 @@ import { Payment } from 'src/app/Models/Payment';
 import { Product } from 'src/app/Modules/product';
 import { User } from 'src/app/Modules/User';
 import { UserService } from 'src/app/Services/user.service';
-import { AddPaymentComponent } from '../add-payment/add-payment.component';
+import { AddPaymentComponent } from './add-payment/add-payment.component';
 import { ProductsService } from './../../Services/products.service';
 
 class Invoice{
@@ -168,7 +168,7 @@ export class PaymentComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed' + result);
+      console.log('The AddPaymentComponent was closed' + result);
       this.payments = result
     });
   }

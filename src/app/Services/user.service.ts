@@ -21,11 +21,7 @@ export class UserService {
     return this.http.get<[]>(getUserPayments+id)
   }
 
-  addPayment(payment: Payment):Observable<any>{
-    console.log(  "payment:- " + payment.cardHolderName)
-    return this.http.post(addUserPayment,payment)
-    
-  }
+  
 
   
   

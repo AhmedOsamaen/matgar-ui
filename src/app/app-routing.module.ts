@@ -9,7 +9,7 @@ import { StoreDetailsComponent } from './main-components/store-details/store-det
 import { StoreComponent } from './main-components/store/store.component';
 import { AddressComponent } from './main-components/address/address.component';
 import { PaymentComponent } from './main-components/payment/payment.component';
-import { AddPaymentComponent } from './main-components/add-payment/add-payment.component';
+import { AddPaymentComponent } from './main-components/payment/add-payment/add-payment.component';
 
 const routes: Routes = [
   { path: MatgarPathsEnum.productsSearch, component: ProductsSearchComponent},

@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Address } from './../../../Models/Address';
-import { PaymentService } from './../../../Services/payment.service';
+import { AddressService } from '../../../Services/address.service';
 import { Component, OnInit,Output,EventEmitter,Input,OnChanges } from '@angular/core';
 
 @Component({
@@ -18,7 +18,7 @@ export class AddressListComponent implements OnInit,OnChanges {
   @Output() selectedForm= new EventEmitter<Address>();
   @Input() newAddress = new Address();
   constructor(
-    private paymentService:PaymentService,
+    private addressService:AddressService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -47,12 +47,12 @@ export class AddressListComponent implements OnInit,OnChanges {
   }
 
   getAllAddresses(){
-    return this.paymentService.getAllAddresses().subscribe(response=>{
+    return this.addressService.getAllAddresses().subscribe(response=>{
       this.addressList=response;
     })
   }
   getAllAddressesForUser(){
-    return this.paymentService.getAllAddressesById(this.userId).subscribe(response=>{
+    return this.addressService.getAllAddressesById(this.userId).subscribe(response=>{
       this.addressList=response;
     })
   }
