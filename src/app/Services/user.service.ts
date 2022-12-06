@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Address } from '../Models/Address';
 import { Payment } from '../Models/Payment';
-import { addUserPayments, getUserPayments , getUserById} from '../Models/ServerRoutingUrls';
+import { addUserPayment, getUserPayments , getUserById} from '../Models/ServerRoutingUrls';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +21,9 @@ export class UserService {
     return this.http.get<[]>(getUserPayments+id)
   }
 
-  addPayments(id: any,payment: String[]):Observable<any>{
-    console.log("id:- " + id + "payment:- " + payment)
-    return this.http.post(addUserPayments+id,payment)
+  addPayment(payment: Payment):Observable<any>{
+    console.log(  "payment:- " + payment.cardHolderName)
+    return this.http.post(addUserPayment,payment)
     
   }
 

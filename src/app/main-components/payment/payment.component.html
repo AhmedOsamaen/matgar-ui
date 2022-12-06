@@ -41,8 +41,8 @@
                 <input   class="btn-check" name="options"  autocomplete="off" />
                 <label class="btn btn-outline-primary btn-lg" >
                   <div class="d-flex justify-content-between">
-                    <span>{{payment}} </span>
-                    <span>**** {{payment}}</span>
+                    <span>{{payment.cardNumber}} </span>
+                    <span>  **** {{payment.last_three_number_back}}</span>
                   </div>
                 </label>
               </div>
@@ -150,16 +150,16 @@
                                         <td scope="row">
                                             <input type="text" class="form-control" name="productName{{i}}"
                                                 [ngClass]="{'is-invalid': invoiceForm.submitted && ProductName.invalid}"
-                                                id="productName" [(ngModel)]="product.name" #ProductName="ngModel"
+                                                 [(ngModel)]="product.name" #ProductName="ngModel"
                                                 required [readonly]="true">
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control" name="price{{i}}" id="price"
+                                            <input type="number" class="form-control" name="price{{i}}" 
                                                 [ngClass]="{'is-invalid': invoiceForm.submitted && ProductPrice.invalid}"
                                                 [(ngModel)]="product.price" #ProductPrice="ngModel" required [readonly]="true">
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control" name="quantity{{i}}" id="quantity"
+                                            <input type="number" class="form-control" name="quantity{{i}}" 
                                                 [ngClass]="{'is-invalid': invoiceForm.submitted && ProductQty.invalid}"
                                                 [(ngModel)]="product.quantity" #ProductQty="ngModel" required
                                                 [readonly]="productsEdit[i]"

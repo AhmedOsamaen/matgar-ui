@@ -164,12 +164,12 @@ export class PaymentComponent implements OnInit {
     
     const dialogRef = this.dialog.open(AddPaymentComponent, {
       width: '35%',
-      data: {name: this.name, animal: this.animal}
+      data: {user: this.user}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      console.log('The dialog was closed' + result);
+      this.payments = result
     });
   }
   products: any[] = [];
@@ -230,7 +230,7 @@ export class PaymentComponent implements OnInit {
   getPayments() {
     
    return this.userService.getUserPayments("13").subscribe(response=> {
-      console.log(response)
+      console.log(" sdsd " + response)
       this.payments =  response
     });
    

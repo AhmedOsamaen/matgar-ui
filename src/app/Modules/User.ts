@@ -1,3 +1,4 @@
+import { Payment } from "../Models/Payment";
 
 export class User{
    
@@ -7,7 +8,7 @@ export class User{
     public email?:String;
     public username?:String;
     public password?:String;
-   
+    public payment?:Payment;
     constructor(
     ){}
     

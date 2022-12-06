@@ -20,5 +20,5 @@ export const getAddressByUserId = environment.serverUrl+'getAddressByUserId/'
 export const saveAddressUrl = environment.serverUrl+'saveAddress'
 // User
 export const getUserPayments = environment.serverUrl+'getUserPayments/'
-export const addUserPayments = environment.serverUrl+'addUserPayments/'
+export const addUserPayment = environment.serverUrl+'addUserPayment/'
 export const getUserById = environment.serverUrl+'getUserById/'
