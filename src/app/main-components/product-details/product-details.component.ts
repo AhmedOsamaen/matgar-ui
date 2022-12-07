@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/Services/products.service';
 import { OrderProduct } from 'src/app/Models/OrderProduct';
+import { UserService } from 'src/app/Services/user.service';
+import { Stage } from 'src/app/Modules/stage';
 
 @Component({
   selector: 'app-product-details',
@@ -13,8 +15,10 @@ import { OrderProduct } from 'src/app/Models/OrderProduct';
 })
 export class ProductDetailsComponent implements OnInit {
   cartItemsCount:number=0;
+  order: any;
   constructor(private backAPIsService:BackAPIsService,private route: ActivatedRoute,
-    private router: Router,private productService:ProductsService) { }
+    private router: Router,private productService:ProductsService,
+    private userService:UserService) { }
   ID="18";
   product:any;
   ngOnInit(): void {
@@ -30,7 +34,7 @@ export class ProductDetailsComponent implements OnInit {
         this.backAPIsService.getProductByID(this.ID).subscribe(x=>{
           console.log("Product:",x)
           this.product=x;
-          this.getCartCount();
+          this.getUserOrder_Cart();
         })
 
       }
@@ -38,8 +42,15 @@ export class ProductDetailsComponent implements OnInit {
     
   }
 
+  getUserOrder_Cart(){
+    
+    this.userService.getUserOrdersStage(13,Stage.CART).subscribe(response=>{
+      this.order = response
+      this.getCartCount();
+    })
+  }
   getCartCount(){
-    const req:OrderProduct = {'order':{id:24},'product':this.product}
+    const req:OrderProduct = {'order':this.order,'product':this.product}
     this.productService.getCartProductsByOrderAndProduct(req).subscribe(response=>{
       this.cartItemsCount=response;
     })
@@ -48,7 +59,7 @@ export class ProductDetailsComponent implements OnInit {
   addItemToCart(product:Product){
     //! saved order id is 24
     console.log('product :>> ', product);
-    const productOrder :OrderProduct ={order:{id:24},product:product} 
+    const productOrder :OrderProduct ={order:this.order,product:product} 
     this.productService.addProductToOrder(productOrder).subscribe(response=>{
     this.cartItemsCount++;
     this.productService.cartItems.next('add');
@@ -58,7 +69,7 @@ export class ProductDetailsComponent implements OnInit {
   removeItemFromCart(product:Product){
      //! saved order id is 24
      console.log('product :>> ', product);
-     const productOrder :OrderProduct ={order:{id:24},product:product} 
+     const productOrder :OrderProduct ={order:this.order,product:product} 
      
      this.productService.deleteProductFromOrder(productOrder).subscribe(response=>{
       this.cartItemsCount--;

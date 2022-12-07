@@ -14,6 +14,7 @@ import { User } from 'src/app/Modules/User';
 import { UserService } from 'src/app/Services/user.service';
 import { AddPaymentComponent } from './add-payment/add-payment.component';
 import { ProductsService } from './../../Services/products.service';
+import { Stage } from 'src/app/Modules/stage';
 
 class Invoice{
   customerName: String | undefined;
@@ -155,7 +156,8 @@ export class PaymentComponent implements OnInit {
     
     this.getPayments()
     this.getUserById()
-    this.getAllProducts()
+    
+    // this.getUserOrder_Cart()
   }
 
   name=""
@@ -176,15 +178,42 @@ export class PaymentComponent implements OnInit {
   productsEdit: Boolean[] = [];
   payments: Payment[] = [];
   user =  new User ;
-  
+  order: any;
+
   getUserById(){
     this.userService.getUserById("13").subscribe( (data: any) => {
       console.log(data)
       this.user =  data
+      console.log('this.user.id:- ' + this.user.id);
       this.setDataUser()
+      this.getUserOrder_Cart(this.user.id);
     });
     return this.user;
   }
+  getUserOrder_Cart(id:any){
+    
+    this.userService.getUserOrdersStage(13,Stage.CART).subscribe(response=>{
+      this.order = response
+      this.getAllProducts();
+    })
+  }
+  
+  getAllProducts(){
+    console.log("this.order" + this.order)
+    return this.productService.getProductsByOrderId(this.order).subscribe(response=>{
+      let Orderproducts=response;
+      console.log("this.Orderproducts" + Orderproducts)
+      Orderproducts.forEach(orderProduct => {
+        this.products.push(orderProduct.product)
+      });
+      this.products.forEach(product => {
+        this.productsEdit.push(true)
+      });
+      
+      console.log("this.productsEdit" + this.productsEdit)
+    })
+  }
+
   setDataUser(){
     this.invoice.customerName = this.user.name
     this.invoice.email = this.user.email
@@ -215,16 +244,7 @@ export class PaymentComponent implements OnInit {
   calculatePrice(a:any,b:any){
     return a*b
   }
-  getAllProducts(){
-    return this.productService.getAllProducts().subscribe(response=>{
-      this.products=response;
-      this.products.forEach(product => {
-        this.productsEdit.push(true)
-      });
-      
-      console.log("this.productsEdit" + this.productsEdit)
-    })
-  }
+  
   
   
   getPayments() {

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable ,Subject} from 'rxjs';
 import { Order } from '../Models/Order';
 import { OrderProduct } from '../Models/OrderProduct';
-import { addorder_product, addProduct, deleteOrderProduct, deleteProductById, getAllProducts ,getCartCount,getCartCountByOrderAndProduct,getProductByStoreId} from '../Models/ServerRoutingUrls';
+import { addorder_product, addProduct, deleteOrderProduct, deleteProductById, getAllProducts ,getCartCount,getCartCountByOrderAndProduct,getProductByStoreId, getProductsByOrderId} from '../Models/ServerRoutingUrls';
 import { Product } from '../Modules/product';
 
 @Injectable({
@@ -46,5 +46,8 @@ export class ProductsService {
   }
   getProductByStoreId(storeId:Number){
     return this.http.get<[]>(getProductByStoreId+storeId)
+  }
+  getProductsByOrderId(order:Order):Observable<OrderProduct[]>{
+    return this.http.post<OrderProduct[]>(getProductsByOrderId,order)
   }
 }
