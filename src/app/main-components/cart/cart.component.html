@@ -1,0 +1,23 @@
+<div>
+    <div class="row">
+        <div *ngFor="let store of storeList" class="col-lg-3" >
+            <mat-card class="example-card " (click)="navigate(store.id)" >
+                <mat-card-header>
+                  <!-- <div mat-card-avatar class="example-header-image"></div> -->
+                  <mat-card-title>{{store.name}}</mat-card-title>
+                </mat-card-header>
+                <!-- <mat-card-content>
+                  <p>
+                    {{product.longDescription}}
+                  </p>
+                </mat-card-content> -->
+                <mat-card-actions>
+                  <button mat-mini-fab color="warn" aria-label="Example icon button with a plus one icon" (click)="$event.stopPropagation();deleteStore(store.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+    </div>
+    
+</div>
